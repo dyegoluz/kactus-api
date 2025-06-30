@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root to: "api/v1/router#home"
+
+  get "api/v1/platform" => "api/v1/router#admin"
+  get "api/v1/admin" => "api/v1/router#admin"
+  get "api/v1/home" => "api/v1/router#home"
 
   Nerdify::Router.dynamic_routes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
