@@ -16,11 +16,13 @@ ENV BUNDLE_BIN=$BUNDLE_PATH/bin
 ENV PATH=/app/bin:$BUNDLE_BIN:$PATH
 
 # Atualiza chaves GPG do Debian (necessário porque as antigas expiraram)
-RUN apt-get update -qq && apt-get install -y --no-install-recommends gnupg ca-certificates curl && \
-    mkdir -p /etc/apt/keyrings && \
-    curl -fsSL https://ftp-master.debian.org/keys/archive-key-12.asc | gpg --dearmor -o /etc/apt/keyrings/debian-archive-keyring.gpg && \
-    curl -fsSL https://ftp-master.debian.org/keys/release-12.asc | gpg --dearmor -o /etc/apt/keyrings/debian-release.gpg
+# Atualiza pacote de chaves antes de qualquer apt-get update
+RUN apt-get clean && \
+    apt-get -o Acquire::AllowInsecureRepositories=true update && \
+    apt-get -o Acquire::AllowInsecureRepositories=true install -y --no-install-recommends debian-archive-keyring && \
+    apt-get update -qq
 
+    
 # Dependências do sistema
 RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ca-certificates \
