@@ -7,17 +7,16 @@ WORKDIR /app
 # Copia os arquivos de dependência
 COPY Gemfile Gemfile.lock ./
 
-# --- CORREÇÃO: ENTRYPOINT para carregar o ambiente (necessário para o "bundle" ser encontrado) ---
-# Usamos o ENTRYPOINT padrão que o herokuish/Dokku usaria para carregar o ambiente.
-# Isso garante que o PATH e o RVM/rbenv sejam configurados.
-ENTRYPOINT ["/bin/bash", "-c", "source /etc/profile.d/herokuish.sh && exec \"$@\""]
+# --- A CORREÇÃO CRÍTICA ESTÁ AQUI ---
+# Chamamos 'source /etc/profile.d/herokuish.sh' diretamente
+# para carregar o ambiente Ruby e encontrar o 'bundle'
+# ANTES de executar o bundle install.
 
-# Instala as dependências.
-# A diferença agora é que o ENTRYPOINT deve garantir que o "bundle" seja encontrado.
-RUN bundle install --without development test
+RUN source /etc/profile.d/herokuish.sh && bundle install --without development test
 
 # Copia o restante da aplicação
 COPY . .
 
+# Remove o ENTRYPOINT, que causava confusão. O Dokku o adiciona no final.
 # Define o comando de inicialização
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
