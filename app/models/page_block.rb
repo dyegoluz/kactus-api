@@ -224,7 +224,7 @@ class PageBlock
   def as_json(options={})
     default_json(options).merge({
       children: children.as_json(options),
-      photo_url: ("http://localhost:3000/#{photo.first.url}" if photo.present?)
+      photo_url: ( photo.first.url if photo.present? )
     })
   end
 end
