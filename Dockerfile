@@ -1,34 +1,71 @@
-# Use a suitable Ruby base image
-FROM ruby:3.2.2-slim-bullseye
+ARG RUBY_VERSION=3.2.2
 
-# Install necessary system dependencies
-RUN apt-get update -qq && apt-get install -yq \
+# Usamos a imagem base com 'bookworm', que é a mais robusta.
+FROM ruby:$RUBY_VERSION-slim-bookworm
+
+ENV RAILS_LOG_TO_STDOUT=true
+ENV RAILS_ROOT=/app
+ENV LANG=C.UTF-8
+
+# Adicionamos a variável de ambiente para o Bundler que pode ajudar a resolver problemas
+# de arquitetura em diferentes ambientes.
+ENV BUNDLE_FORCE_RUBY_PLATFORM=true
+
+# Instalação das dependências do sistema
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    ca-certificates \
     build-essential \
+    curl \
+    git \
+    cmake \
+    gnupg2 \
+    pkg-config \
+    imagemagick \
+    ffmpegthumbnailer \
+    manpages-dev \
+    libgit2-dev \
+    wget \
+    ffmpeg \
+    less \
+    libxml2-dev \
+    libgssapi-krb5-2 \
+    libpq5 \
+    libpam0g-dev \
+    libedit-dev \
+    libxslt1-dev \
+    libcurl4-openssl-dev \
+    openssl \
+    liblzma5 \
+    libpq-dev \
     nodejs \
-    npm \
-    postgresql-client \
-    --no-install-recommends && rm -rf /var/lib/apt/lists/*
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /var/tmp/* \
+  && truncate -s 0 /var/log/*log
 
-# Set the working directory inside the container
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Copy Gemfile and Gemfile.lock to leverage Docker's layer caching
+# Copia arquivos essenciais para o cache de camadas do Docker
 COPY Gemfile Gemfile.lock ./
 
-# Install Ruby gems
-RUN bundle install --jobs 4 --retry 3 --without development test
+# Instalação das gems. O Dokku detectará o Procfile automaticamente.
+# Usamos `bundle config set` em vez da flag obsoleta `--without`.
+RUN bundle config set --local without 'development test' && \
+    bundle config set --local path 'vendor/bundle' && \
+    bundle install --jobs 4 --retry 3
 
-# Copy the rest of the application code
+# Copia o restante do código da aplicação, incluindo o Procfile e o nginx.conf.sigil.
 COPY . .
 
-# Precompile assets (if applicable for your Rails app)
-# This step can be conditional based on your Rails environment
-# For Dokku, it's typically done during the build phase
-# RUN bundle exec rails assets:precompile
-
-# Expose the port your Rails application will listen on
-# Dokku defaults to port 5000 if no port is explicitly exposed.
+# Expõe a porta 5000, que é o padrão do Dokku. O Nginx do Dokku fará o roteamento.
 EXPOSE 5000
 
-# Define the command to run the Rails server
-# CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "5000"]
+# O Dokku detecta a instrução de execução a partir do `Procfile`, por isso a
+# linha `CMD` não é necessária ou pode ser simplificada.
+# Removendo a linha CMD pois o Procfile já definirá o processo `web`.
+# A ausência de um `CMD` no Dockerfile faz com que o Dokku procure o `Procfile`
+# para determinar o comando de inicialização.
+
+# Para o Nginx, o Dokku extrai o `nginx.conf.sigil` que estiver na raiz
+# do diretório de trabalho (`/app` neste caso) e o utiliza para configurar
+# o proxy. Não é necessária nenhuma instrução adicional no Dockerfile.
