@@ -1,76 +1,51 @@
 ARG RUBY_VERSION=3.2.2
+FROM ruby:$RUBY_VERSION-alpine
 
-FROM ruby:$RUBY_VERSION-bookworm
+ARG BUNDLER_VERSION=2.6.8
 
-ARG BUNDLER_VERSION=2.4.10
+ENV RAILS_ENV=production \
+    RAILS_LOG_TO_STDOUT=true \
+    RAILS_SERVE_STATIC_FILES=true \
+    LANG=C.UTF-8 \
+    GEM_HOME=/bundle \
+    BUNDLE_PATH=/bundle \
+    BUNDLE_APP_CONFIG=/bundle \
+    BUNDLE_BIN=/bundle/bin \
+    PATH=/app/bin:/bundle/bin:$PATH
 
-ENV RAILS_LOG_TO_STDOUT=true
-ENV RAILS_SERVE_STATIC_FILES=true
-ENV RAILS_ENV=production
-ENV RAILS_ROOT=/app
-ENV LANG=C.UTF-8
-ENV GEM_HOME=/bundle
-ENV BUNDLE_PATH=$GEM_HOME
-ENV BUNDLE_APP_CONFIG=$BUNDLE_PATH
-ENV BUNDLE_BIN=$BUNDLE_PATH/bin
-ENV PATH=/app/bin:$BUNDLE_BIN:$PATH
-
-# Atualiza chaves GPG do Debian (necessário porque as antigas expiraram)
-# Atualiza pacote de chaves antes de qualquer apt-get update
-RUN apt-get clean && \
-    apt-get -o Acquire::AllowInsecureRepositories=true update && \
-    apt-get -o Acquire::AllowInsecureRepositories=true install -y --no-install-recommends debian-archive-keyring && \
-    apt-get update -qq
-
-    
-# Dependências do sistema
-RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates \
-    build-essential \
-    curl \
+# Dependências do sistema (ajuste conforme suas gems precisam)
+RUN apk add --no-cache \
+    build-base \
+    bash \
     git \
-    cmake \
-    gnupg2 \
-    pkg-config \
-    imagemagick \
-    ffmpegthumbnailer \
-    manpages-dev \
-    libgit2-dev \
-    wget \
-    ffmpeg \
-    less \
-    libxml2-dev \
-    libgssapi-krb5-2 \
-    libpq5 \
-    libpam0g-dev \
-    libedit-dev \
-    libxslt1-dev \
-    libcurl4-openssl-dev \
-    openssl \
-    liblzma5 \
-    libpq-dev \
     nodejs \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /var/tmp/* \
-  && truncate -s 0 /var/log/*log
+    yarn \
+    imagemagick \
+    ffmpeg \
+    libxml2-dev \
+    libxslt-dev \
+    postgresql-dev \
+    curl \
+    tzdata \
+    less \
+    gcompat \
+    libc6-compat
 
 WORKDIR /app
 
-# Copia só Gemfile e lock para cache do bundle
+# Copia Gemfile para cache
 COPY Gemfile Gemfile.lock ./
 
-RUN gem install bundler -v $BUNDLER_VERSION
-RUN bundle config set --global without 'development test' && \
-    bundle config set --global path 'vendor/bundle' && \
-    bundle config set --global disable_install_doc true && \
+# Instala bundler na versão correta
+RUN gem install bundler -v $BUNDLER_VERSION && \
+    bundle config set without 'development test' && \
     bundle config set force_ruby_platform true && \
     bundle install --jobs 4 --retry 3
 
-# Copia restante do projeto
+# Copia restante do app
 COPY . .
 
-# Precompilar assets (descomente se usar sprockets/jsbundling/cssbundling)
+# Precompile assets (se necessário)
 # RUN bundle exec rake assets:precompile
 
-# Porta usada pelo Dokku
 EXPOSE 5000
