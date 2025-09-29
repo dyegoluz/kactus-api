@@ -679,6 +679,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  bundler (~> 2.6.8)
   capybara
   cucumber-rails
   database_cleaner-mongoid
