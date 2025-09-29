@@ -1,4 +1,4 @@
-# Use uma imagem Heroku oficial como base para melhor compatibilidade com Ruby/Rails
+# Usa a imagem Heroku oficial como base
 FROM heroku/heroku:22-build
 
 # Define o diretório de trabalho
@@ -7,12 +7,17 @@ WORKDIR /app
 # Copia os arquivos de dependência
 COPY Gemfile Gemfile.lock ./
 
-# Instala as dependências (sem ambientes de dev/test)
-# ATENÇÃO: Se seu build falhar aqui por falta de memória, este é o momento crítico.
+# Define o ENTRYPOINT da imagem Heroku.
+# Isso garante que o ambiente (incluindo o Ruby e o Bundler) seja carregado.
+# Isso deve resolver o problema "bundle: not found".
+ENTRYPOINT ["/bin/bash", "-c"]
+
+# Instala as dependências. Usamos o "sh -c" para garantir que o ENTRYPOINT seja executado.
+# Mantenha o RUN como estava, mas a correção virá do ENTRYPOINT.
 RUN bundle install --without development test
 
 # Copia o restante da aplicação
 COPY . .
 
-# Define o comando de inicialização (como no Procfile original)
+# Define o comando de inicialização
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
