@@ -33,6 +33,9 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
+# Cria diretório para bundler e dá permissão
+RUN mkdir -p /bundle && chmod 777 /bundle
+
 # Copia Gemfile para cache
 COPY Gemfile Gemfile.lock ./
 
