@@ -7,42 +7,38 @@ ENV RAILS_LOG_TO_STDOUT=true
 ENV RAILS_ROOT=/app
 ENV LANG=C.UTF-8
 
-# Adicionamos a variável de ambiente para o Bundler
+# Adiciona a variável de ambiente para o Bundler que pode ajudar a resolver problemas
+# de arquitetura em diferentes ambientes.
 ENV BUNDLE_FORCE_RUBY_PLATFORM=true
 
-# Adiciona as chaves de segurança mais recentes do Debian
-RUN apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    debian-archive-keyring \
-    && rm -rf /var/lib/apt/lists/*
-
-# Instalação das dependências do sistema
-RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates \
-    build-essential \
-    curl \
-    git \
-    cmake \
-    gnupg2 \
-    pkg-config \
-    imagemagick \
-    ffmpegthumbnailer \
-    manpages-dev \
-    libgit2-dev \
-    wget \
-    ffmpeg \
-    less \
-    libxml2-dev \
-    libgssapi-krb5-2 \
-    libpq5 \
-    libpam0g-dev \
-    libedit-dev \
-    libxslt1-dev \
-    libcurl4-openssl-dev \
-    openssl \
-    liblzma5 \
-    libpq-dev \
-    nodejs \
+# Adiciona um workaround para o problema de GPG
+RUN apt-get update -qq \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+  ca-certificates \
+  build-essential \
+  curl \
+  git \
+  cmake \
+  gnupg2 \
+  pkg-config \
+  imagemagick \
+  ffmpegthumbnailer \
+  manpages-dev \
+  libgit2-dev \
+  wget \
+  ffmpeg \
+  less \
+  libxml2-dev \
+  libgssapi-krb5-2 \
+  libpq5 \
+  libpam0g-dev \
+  libedit-dev \
+  libxslt1-dev \
+  libcurl4-openssl-dev \
+  openssl \
+  liblzma5 \
+  libpq-dev \
+  nodejs \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /var/tmp/* \
   && truncate -s 0 /var/log/*log
