@@ -41,7 +41,7 @@ end
 
 gem "mimemagic", github: "mimemagicrb/mimemagic", ref: "01f92d86d15d85cfd0f20dabd025dcbd36a8a60f"
 
-gem "nerdify", "2.3.1", source: "https://eXZzsmyrXCfgshYu1n1n@gem.fury.io/nerdify/"
+gem "nerdify", "2.3.1", source: "https://gem.fury.io/nerdify/"
 gem "mongoid_auto_increment"
 gem "httparty"
 gem "ofx"
