@@ -1,6 +1,6 @@
 ARG RUBY_VERSION=3.2.2
 
-FROM ruby:$RUBY_VERSION-slim-bookworm
+FROM ruby:$RUBY_VERSION-bookworm
 
 ARG BUNDLER_VERSION=2.4.10
 
@@ -48,7 +48,7 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no
 
 WORKDIR /app
 
-# Copia só Gemfile e lock primeiro (cache de dependências)
+# Copia só Gemfile e lock para cache do bundle
 COPY Gemfile Gemfile.lock ./
 
 RUN gem install bundler -v $BUNDLER_VERSION
@@ -58,13 +58,11 @@ RUN bundle config set --global without 'development test' && \
     bundle config set force_ruby_platform true && \
     bundle install --jobs 4 --retry 3
 
-# Copia o restante do projeto
+# Copia restante do projeto
 COPY . .
 
-# Precompilar assets (se houver)
+# Precompilar assets (descomente se usar sprockets/jsbundling/cssbundling)
 # RUN bundle exec rake assets:precompile
 
-# Porta padrão do Dokku
+# Porta usada pelo Dokku
 EXPOSE 5000
-
-# Não definimos CMD — Dokku vai usar o Procfile
