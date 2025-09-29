@@ -19,7 +19,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "debug", platforms: %i[ mri ], require: "debug/prelude"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
@@ -39,7 +39,7 @@ end
 
 gem "mimemagic", github: "mimemagicrb/mimemagic", ref: "01f92d86d15d85cfd0f20dabd025dcbd36a8a60f"
 
-gem "nerdify", path: "~/SocioNerd/Nerdify/nerdify"# "2.1.7", source: "https://eXZzsmyrXCfgshYu1n1n@gem.fury.io/nerdify/"
+gem "nerdify", "2.3.1", source: "https://eXZzsmyrXCfgshYu1n1n@gem.fury.io/nerdify/"
 gem "mongoid_auto_increment"
 gem "httparty"
 gem "ofx"
