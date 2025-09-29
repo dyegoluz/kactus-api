@@ -11,38 +11,44 @@ ENV LANG=C.UTF-8
 # de arquitetura em diferentes ambientes.
 ENV BUNDLE_FORCE_RUBY_PLATFORM=true
 
-# Adiciona um workaround para o problema de GPG
-RUN apt-get update -qq \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-  ca-certificates \
-  build-essential \
-  curl \
-  git \
-  cmake \
-  gnupg2 \
-  pkg-config \
-  imagemagick \
-  ffmpegthumbnailer \
-  manpages-dev \
-  libgit2-dev \
-  wget \
-  ffmpeg \
-  less \
-  libxml2-dev \
-  libgssapi-krb5-2 \
-  libpq5 \
-  libpam0g-dev \
-  libedit-dev \
-  libxslt1-dev \
-  libcurl4-openssl-dev \
-  openssl \
-  liblzma5 \
-  libpq-dev \
-  nodejs \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /var/tmp/* \
-  && truncate -s 0 /var/log/*log
+# Workaround para o problema de GPG (ajuda a evitar problemas com chaves ausentes)
+# Cria um arquivo vazio no local esperado, às vezes resolve o problema de sub-processo
+RUN mkdir -p /etc/apt/keyrings && touch /etc/apt/keyrings/debian-archive-keyring.gpg
 
+# Lista de dependências do sistema
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    # Compilação e ferramentas gerais
+    ca-certificates \
+    build-essential \
+    curl \
+    git \
+    cmake \
+    gnupg2 \
+    pkg-config \
+    wget \
+    less \
+    # Dependências para libs/gems
+    imagemagick \
+    ffmpeg \
+    ffmpegthumbnailer \
+    libxml2-dev \
+    libxslt1-dev \
+    libpq-dev \
+    libcurl4-openssl-dev \
+    openssl \
+    libgssapi-krb5-2 \
+    libpq5 \
+    liblzma5 \
+    # nodejs (para Asset Pipeline)
+    nodejs \
+    # Outros que você tinha
+    manpages-dev \
+    libgit2-dev \
+    libpam0g-dev \
+    libedit-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+    
 # Define o diretório de trabalho
 WORKDIR /app
 
