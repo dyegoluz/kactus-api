@@ -7,13 +7,13 @@ WORKDIR /app
 # Copia os arquivos de dependência
 COPY Gemfile Gemfile.lock ./
 
-# Define o ENTRYPOINT da imagem Heroku.
-# Isso garante que o ambiente (incluindo o Ruby e o Bundler) seja carregado.
-# Isso deve resolver o problema "bundle: not found".
-ENTRYPOINT ["/bin/bash", "-c"]
+# --- CORREÇÃO: ENTRYPOINT para carregar o ambiente (necessário para o "bundle" ser encontrado) ---
+# Usamos o ENTRYPOINT padrão que o herokuish/Dokku usaria para carregar o ambiente.
+# Isso garante que o PATH e o RVM/rbenv sejam configurados.
+ENTRYPOINT ["/bin/bash", "-c", "source /etc/profile.d/herokuish.sh && exec \"$@\""]
 
-# Instala as dependências. Usamos o "sh -c" para garantir que o ENTRYPOINT seja executado.
-# Mantenha o RUN como estava, mas a correção virá do ENTRYPOINT.
+# Instala as dependências.
+# A diferença agora é que o ENTRYPOINT deve garantir que o "bundle" seja encontrado.
 RUN bundle install --without development test
 
 # Copia o restante da aplicação
