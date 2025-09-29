@@ -1,0 +1,1673 @@
+---
+pt-BR:
+  api/v1/admin/pages/page_blocks:
+    show:
+      title: Mostrar bloco de página
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        icon: {}
+        name:
+          name: Nome
+          icon: info
+          placeholder: Tipo Nome
+        teste:
+          name: Teste
+          icon: info
+        page_block_show_title:
+          name: Bloco de página
+          icon: info
+        page_block_show_help:
+          name: Lista de blocos de páginas registrados
+          icon: info
+        page_block:
+          name: Bloco de página
+          icon: info
+        type:
+          name: Tipo
+          icon: info
+          placeholder: Selecione o tipo
+          inclusion:
+            container:
+              label: Recipiente
+              value: container
+              id: container
+            text:
+              label: Texto
+              value: text
+              id: text
+            button:
+              label: Botão
+              value: button
+              id: button
+            video:
+              label: Vídeo
+              value: video
+              id: video
+            photo:
+              label: Foto
+              value: photo
+              id: photo
+            photos:
+              label: Fotos
+              value: photos
+              id: photos
+            chart:
+              label: Gráfico
+              value: chart
+              id: chart
+            nav:
+              label: Nenhum
+              value: nav
+              id: nav
+            form:
+              label: Forma
+              value: form
+              id: form
+        position:
+          name: Posição
+          icon: info
+          placeholder: Select Posição
+          inclusion:
+            body:
+              label: Corpo
+              value: body
+              id: body
+            top:
+              label: Principal
+              value: top
+              id: top
+            right:
+              label: Certo
+              value: right
+              id: right
+            bottom:
+              label: Fundo
+              value: bottom
+              id: bottom
+            left:
+              label: Esquerda
+              value: left
+              id: left
+            header:
+              label: Cabeçalho
+              value: header
+              id: header
+            footer:
+              label: Rodapé
+              value: footer
+              id: footer
+        parent_id:
+          name: Pais
+          icon: info
+          placeholder: Selecione Pais
+        tabs: {}
+        tabs_tabs:
+          name: Guias guias
+          icon: info
+          inclusion:
+            content:
+              icon: info
+              label: Contente
+              value: content
+              id: content
+            styles:
+              icon: info
+              label: Estilos
+              value: styles
+              id: styles
+            actions:
+              icon: info
+              label: Ações
+              value: actions
+              id: actions
+        content:
+          name: Contente
+          icon: info
+        text_component:
+          name: Componente de texto
+          icon: info
+        title:
+          name: Título
+          icon: info
+          placeholder: Digite o título
+        title_type:
+          name: Tipo de título
+          icon: info
+          placeholder: Selecione o tipo de título
+          inclusion:
+            h1:
+              label: H1
+              value: h1
+              id: h1
+            h2:
+              label: H2
+              value: h2
+              id: h2
+            h3:
+              label: H3
+              value: h3
+              id: h3
+            h4:
+              label: H4
+              value: h4
+              id: h4
+            h5:
+              label: H5
+              value: h5
+              id: h5
+            h6:
+              label: H6
+              value: h6
+              id: h6
+            p:
+              label: P
+              value: p
+              id: p
+            span:
+              label: Extensão
+              value: span
+              id: span
+            small:
+              label: Pequeno
+              value: small
+              id: small
+        subtitle:
+          name: Legenda
+          icon: info
+          placeholder: Legenda do tipo
+        subtitle_type:
+          name: Tipo de legenda
+          icon: info
+          placeholder: Selecione o tipo de legenda
+          inclusion:
+            h1:
+              label: H1
+              value: h1
+              id: h1
+            h2:
+              label: H2
+              value: h2
+              id: h2
+            h3:
+              label: H3
+              value: h3
+              id: h3
+            h4:
+              label: H4
+              value: h4
+              id: h4
+            h5:
+              label: H5
+              value: h5
+              id: h5
+            h6:
+              label: H6
+              value: h6
+              id: h6
+            p:
+              label: P
+              value: p
+              id: p
+            span:
+              label: Extensão
+              value: span
+              id: span
+            small:
+              label: Pequeno
+              value: small
+              id: small
+        paragraph:
+          name: Parágrafo
+          icon: info
+          placeholder: Type Parágrafo
+        button_component:
+          name: Componente de botão
+          icon: info
+        button_text:
+          name: Texto do botão
+          icon: info
+          placeholder: Type Texto do botão
+        button_icon:
+          name: Ícone de botão
+          icon: info
+          placeholder: Type Ícone de botão
+        video:
+          name: Vídeo
+          icon: info
+        video_url:
+          name: URL do vídeo
+          icon: info
+          placeholder: Type URL do vídeo
+        video_width:
+          name: Largura do vídeo
+          icon: info
+          placeholder: Type Largura do vídeo
+        video_height:
+          name: Altura do vídeo
+          icon: info
+          placeholder: Type Altura do vídeo
+        photo:
+          name: Foto
+          icon: photo
+          placeholder: Selecione a foto
+        photos:
+          name: Fotos
+          icon: info
+          placeholder: Select Fotos...
+        chart:
+          name: Gráfico
+          icon: info
+        chart_type:
+          name: Tipo de gráfico
+          icon: info
+          placeholder: Selecione o tipo de gráfico
+          inclusion:
+            pie:
+              label: 'No'
+              value: pie
+              id: pie
+            bar:
+              label: Bar
+              value: bar
+              id: bar
+            line:
+              label: Linha
+              value: line
+              id: line
+            doughnut:
+              label: Rosquinha
+              value: doughnut
+              id: doughnut
+        chart_x:
+          name: Gráfico x
+          icon: info
+          placeholder: Select Gráfico x
+        chart_y:
+          name: Gráfico e
+          icon: info
+          placeholder: Select Gráfico e
+        nav:
+          name: Nenhum
+          icon: info
+        form:
+          name: Forma
+          icon: info
+        styles:
+          name: Estilos
+          icon: info
+        margin:
+          name: Margem
+          icon: info
+        margin_left:
+          name: Margem esquerda
+          icon: info
+          placeholder: Select Margem esquerda
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        margin_right:
+          name: Margem direita
+          icon: info
+          placeholder: Select Margem direita
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        margin_top:
+          name: Margem superior
+          icon: info
+          placeholder: Select Margem superior
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        margin_bottom:
+          name: Margem inferior
+          icon: info
+          placeholder: Select Margem inferior
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        padding:
+          name: Preenchimento
+          icon: info
+        padding_left:
+          name: Preenchimento à esquerda
+          icon: info
+          placeholder: Select Preenchimento à esquerda
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        padding_right:
+          name: Preenchimento à direita
+          icon: info
+          placeholder: Select Preenchimento à direita
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        padding_top:
+          name: Parte superior acolchoada
+          icon: info
+          placeholder: Select Parte superior acolchoada
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        padding_bottom:
+          name: Fundo acolchoado
+          icon: info
+          placeholder: Select Fundo acolchoado
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        border:
+          name: Fronteira
+          icon: info
+        border_left:
+          name: Borda esquerda
+          icon: border_left
+          placeholder: Select Borda esquerda
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        border_right:
+          name: Fronteira à direita
+          icon: border_right
+          placeholder: Select Fronteira à direita
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        border_top:
+          name: Borda superior
+          icon: border_top
+          placeholder: Select Borda superior
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        border_bottom:
+          name: Borda inferior
+          icon: border_bottom
+          placeholder: Select Borda inferior
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        rounded:
+          name: Arredondado
+          icon: info
+        rounded_top_left:
+          name: Canto superior esquerdo arredondado
+          icon: info
+          placeholder: Select Canto superior esquerdo arredondado
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        rounded_top_right:
+          name: Canto superior direito arredondado
+          icon: info
+          placeholder: Select Canto superior direito arredondado
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        rounded_bottom_left:
+          name: Canto inferior esquerdo arredondado
+          icon: info
+          placeholder: Select Canto inferior esquerdo arredondado
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        rounded_bottom_right:
+          name: Canto inferior direito arredondado
+          icon: info
+          placeholder: Select Canto inferior direito arredondado
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        text:
+          name: Texto
+          icon: info
+        title_color:
+          name: Cor do título
+          icon: info
+          placeholder: Select Cor do título
+          inclusion:
+            primary:
+              label: Primário
+              value: primary
+              id: primary
+            secondary:
+              label: Secundário
+              value: secondary
+              id: secondary
+            success:
+              label: Sucesso
+              value: success
+              id: success
+            danger:
+              label: Perigo
+              value: danger
+              id: danger
+            warning:
+              label: Aviso
+              value: warning
+              id: warning
+            info:
+              label: Informações
+              value: info
+              id: info
+            light:
+              label: Luz
+              value: light
+              id: light
+            dark:
+              label: Escuro
+              value: dark
+              id: dark
+            transparent:
+              label: Transparente
+              value: transparent
+              id: transparent
+        subtitle_color:
+          name: Cor da legenda
+          icon: info
+          placeholder: Select Cor da legenda
+          inclusion:
+            primary:
+              label: Primário
+              value: primary
+              id: primary
+            secondary:
+              label: Secundário
+              value: secondary
+              id: secondary
+            success:
+              label: Sucesso
+              value: success
+              id: success
+            danger:
+              label: Perigo
+              value: danger
+              id: danger
+            warning:
+              label: Aviso
+              value: warning
+              id: warning
+            info:
+              label: Informações
+              value: info
+              id: info
+            light:
+              label: Luz
+              value: light
+              id: light
+            dark:
+              label: Escuro
+              value: dark
+              id: dark
+            transparent:
+              label: Transparente
+              value: transparent
+              id: transparent
+        text_color:
+          name: Cor do texto
+          icon: info
+          placeholder: Select Cor do texto
+          inclusion:
+            primary:
+              label: Primário
+              value: primary
+              id: primary
+            secondary:
+              label: Secundário
+              value: secondary
+              id: secondary
+            success:
+              label: Sucesso
+              value: success
+              id: success
+            danger:
+              label: Perigo
+              value: danger
+              id: danger
+            warning:
+              label: Aviso
+              value: warning
+              id: warning
+            info:
+              label: Informações
+              value: info
+              id: info
+            light:
+              label: Luz
+              value: light
+              id: light
+            dark:
+              label: Escuro
+              value: dark
+              id: dark
+            transparent:
+              label: Transparente
+              value: transparent
+              id: transparent
+        title_weight:
+          name: Peso do título
+          icon: info
+          placeholder: Select Peso do título
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        subtitle_weight:
+          name: Peso da legenda
+          icon: info
+          placeholder: Select Peso da legenda
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        text_weight:
+          name: Peso do texto
+          icon: info
+          placeholder: Select Peso do texto
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        sizes:
+          name: Tamanhos
+          icon: info
+        body_size:
+          name: Tamanho do corpo
+          icon: info
+          placeholder: Select Tamanho do corpo
+          inclusion:
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+            '6':
+              label: '6'
+              value: '6'
+              id: '6'
+            '7':
+              label: '7'
+              value: '7'
+              id: '7'
+            '8':
+              label: '8'
+              value: '8'
+              id: '8'
+            '9':
+              label: '9'
+              value: '9'
+              id: '9'
+            '10':
+              label: '10'
+              value: '10'
+              id: '10'
+            '11':
+              label: '11'
+              value: '11'
+              id: '11'
+            '12':
+              label: '12'
+              value: '12'
+              id: '12'
+        left_size:
+          name: Tamanho esquerdo
+          icon: info
+          placeholder: Select Tamanho esquerdo
+          inclusion:
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+            '6':
+              label: '6'
+              value: '6'
+              id: '6'
+            '7':
+              label: '7'
+              value: '7'
+              id: '7'
+            '8':
+              label: '8'
+              value: '8'
+              id: '8'
+            '9':
+              label: '9'
+              value: '9'
+              id: '9'
+            '10':
+              label: '10'
+              value: '10'
+              id: '10'
+            '11':
+              label: '11'
+              value: '11'
+              id: '11'
+            '12':
+              label: '12'
+              value: '12'
+              id: '12'
+        right_size:
+          name: Tamanho certo
+          icon: info
+          placeholder: Select Tamanho certo
+          inclusion:
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+            '6':
+              label: '6'
+              value: '6'
+              id: '6'
+            '7':
+              label: '7'
+              value: '7'
+              id: '7'
+            '8':
+              label: '8'
+              value: '8'
+              id: '8'
+            '9':
+              label: '9'
+              value: '9'
+              id: '9'
+            '10':
+              label: '10'
+              value: '10'
+              id: '10'
+            '11':
+              label: '11'
+              value: '11'
+              id: '11'
+            '12':
+              label: '12'
+              value: '12'
+              id: '12'
+        top_size:
+          name: Tamanho superior
+          icon: info
+          placeholder: Select Tamanho superior
+          inclusion:
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+            '6':
+              label: '6'
+              value: '6'
+              id: '6'
+            '7':
+              label: '7'
+              value: '7'
+              id: '7'
+            '8':
+              label: '8'
+              value: '8'
+              id: '8'
+            '9':
+              label: '9'
+              value: '9'
+              id: '9'
+            '10':
+              label: '10'
+              value: '10'
+              id: '10'
+            '11':
+              label: '11'
+              value: '11'
+              id: '11'
+            '12':
+              label: '12'
+              value: '12'
+              id: '12'
+        bottom_size:
+          name: Tamanho inferior
+          icon: info
+          placeholder: Select Tamanho inferior
+          inclusion:
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+            '6':
+              label: '6'
+              value: '6'
+              id: '6'
+            '7':
+              label: '7'
+              value: '7'
+              id: '7'
+            '8':
+              label: '8'
+              value: '8'
+              id: '8'
+            '9':
+              label: '9'
+              value: '9'
+              id: '9'
+            '10':
+              label: '10'
+              value: '10'
+              id: '10'
+            '11':
+              label: '11'
+              value: '11'
+              id: '11'
+            '12':
+              label: '12'
+              value: '12'
+              id: '12'
+        orientation:
+          name: Orientação
+          icon: info
+        body_orientation:
+          name: Orientação corporal
+          icon: info
+          placeholder: Select Orientação corporal
+          inclusion:
+            vertical:
+              label: Vertical
+              value: vertical
+              id: vertical
+            horizontal:
+              label: Horizontal
+              value: horizontal
+              id: horizontal
+        left_orientation:
+          name: Orientação à esquerda
+          icon: info
+          placeholder: Select Orientação à esquerda
+          inclusion:
+            vertical:
+              label: Vertical
+              value: vertical
+              id: vertical
+            horizontal:
+              label: Horizontal
+              value: horizontal
+              id: horizontal
+        right_orientation:
+          name: Orientação correta
+          icon: info
+          placeholder: Select Orientação correta
+          inclusion:
+            vertical:
+              label: Vertical
+              value: vertical
+              id: vertical
+            horizontal:
+              label: Horizontal
+              value: horizontal
+              id: horizontal
+        top_orientation:
+          name: Orientação superior
+          icon: info
+          placeholder: Select Orientação superior
+          inclusion:
+            vertical:
+              label: Vertical
+              value: vertical
+              id: vertical
+            horizontal:
+              label: Horizontal
+              value: horizontal
+              id: horizontal
+        bottom_orientation:
+          name: Orientação inferior
+          icon: info
+          placeholder: Select Orientação inferior
+          inclusion:
+            vertical:
+              label: Vertical
+              value: vertical
+              id: vertical
+            horizontal:
+              label: Horizontal
+              value: horizontal
+              id: horizontal
+        align:
+          name: Alinhar
+          icon: info
+        body_align:
+          name: Alinhamento corporal
+          icon: info
+          placeholder: Select Alinhamento corporal
+          inclusion:
+            left:
+              label: Esquerda
+              value: left
+              id: left
+            center:
+              label: Centro
+              value: center
+              id: center
+            right:
+              label: Certo
+              value: right
+              id: right
+        left_align:
+          name: Alinhamento à esquerda
+          icon: info
+          placeholder: Select Alinhamento à esquerda
+          inclusion:
+            left:
+              label: Esquerda
+              value: left
+              id: left
+            center:
+              label: Centro
+              value: center
+              id: center
+            right:
+              label: Certo
+              value: right
+              id: right
+        right_align:
+          name: Alinhar à direita
+          icon: info
+          placeholder: Select Alinhar à direita
+          inclusion:
+            left:
+              label: Esquerda
+              value: left
+              id: left
+            center:
+              label: Centro
+              value: center
+              id: center
+            right:
+              label: Certo
+              value: right
+              id: right
+        top_align:
+          name: Alinhamento superior
+          icon: info
+          placeholder: Select Alinhamento superior
+          inclusion:
+            left:
+              label: Esquerda
+              value: left
+              id: left
+            center:
+              label: Centro
+              value: center
+              id: center
+            right:
+              label: Certo
+              value: right
+              id: right
+        bottom_align:
+          name: Alinhamento inferior
+          icon: info
+          placeholder: Select Alinhamento inferior
+          inclusion:
+            left:
+              label: Esquerda
+              value: left
+              id: left
+            center:
+              label: Centro
+              value: center
+              id: center
+            right:
+              label: Certo
+              value: right
+              id: right
+        vertical_align:
+          name: Alinhamento vertical
+          icon: info
+        body_vertical_align:
+          name: Alinhamento vertical do corpo
+          icon: info
+          placeholder: Select Alinhamento vertical do corpo
+          inclusion:
+            top:
+              label: Principal
+              value: top
+              id: top
+            center:
+              label: Centro
+              value: center
+              id: center
+            bottom:
+              label: Fundo
+              value: bottom
+              id: bottom
+            stretch:
+              label: Esticar
+              value: stretch
+              id: stretch
+        left_vertical_align:
+          name: Alinhamento vertical à esquerda
+          icon: info
+          placeholder: Select Alinhamento vertical à esquerda
+          inclusion:
+            top:
+              label: Principal
+              value: top
+              id: top
+            center:
+              label: Centro
+              value: center
+              id: center
+            bottom:
+              label: Fundo
+              value: bottom
+              id: bottom
+            stretch:
+              label: Esticar
+              value: stretch
+              id: stretch
+        right_vertical_align:
+          name: Alinhamento vertical à direita
+          icon: info
+          placeholder: Select Alinhamento vertical à direita
+          inclusion:
+            top:
+              label: Principal
+              value: top
+              id: top
+            center:
+              label: Centro
+              value: center
+              id: center
+            bottom:
+              label: Fundo
+              value: bottom
+              id: bottom
+            stretch:
+              label: Esticar
+              value: stretch
+              id: stretch
+        top_vertical_align:
+          name: Alinhamento vertical superior
+          icon: info
+          placeholder: Select Alinhamento vertical superior
+          inclusion:
+            top:
+              label: Principal
+              value: top
+              id: top
+            center:
+              label: Centro
+              value: center
+              id: center
+            bottom:
+              label: Fundo
+              value: bottom
+              id: bottom
+            stretch:
+              label: Esticar
+              value: stretch
+              id: stretch
+        bottom_vertical_align:
+          name: Alinhamento vertical inferior
+          icon: info
+          placeholder: Select Alinhamento vertical inferior
+          inclusion:
+            top:
+              label: Principal
+              value: top
+              id: top
+            center:
+              label: Centro
+              value: center
+              id: center
+            bottom:
+              label: Fundo
+              value: bottom
+              id: bottom
+            stretch:
+              label: Esticar
+              value: stretch
+              id: stretch
+        images:
+          name: Imagens
+          icon: info
+        width:
+          name: Largura
+          icon: info
+          placeholder: Tipo Largura
+        image_size:
+          name: Tamanho da imagem
+          icon: info
+          placeholder: Select Tamanho da imagem
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+        background_color:
+          name: Cor de fundo
+          icon: info
+          placeholder: Select Cor de fundo
+          inclusion:
+            primary:
+              label: Primário
+              value: primary
+              id: primary
+            secondary:
+              label: Secundário
+              value: secondary
+              id: secondary
+            success:
+              label: Sucesso
+              value: success
+              id: success
+            danger:
+              label: Perigo
+              value: danger
+              id: danger
+            warning:
+              label: Aviso
+              value: warning
+              id: warning
+            info:
+              label: Informações
+              value: info
+              id: info
+            light:
+              label: Luz
+              value: light
+              id: light
+            dark:
+              label: Escuro
+              value: dark
+              id: dark
+            transparent:
+              label: Transparente
+              value: transparent
+              id: transparent
+        background_opacity:
+          name: Opacidade de fundo
+          icon: info
+          placeholder: Select Opacidade de fundo
+          inclusion:
+            '0':
+              label: '0'
+              value: '0'
+              id: '0'
+            '25':
+              label: '25'
+              value: '25'
+              id: '25'
+            '50':
+              label: '50'
+              value: '50'
+              id: '50'
+            '75':
+              label: '75'
+              value: '75'
+              id: '75'
+            '100':
+              label: '100'
+              value: '100'
+              id: '100'
+        background_image:
+          name: Imagem de fundo
+          icon: info
+          placeholder: Select Imagem de fundo
+        background_type:
+          name: Tipo de fundo
+          icon: info
+          placeholder: Select Tipo de fundo
+          inclusion:
+            cover:
+              label: Cobrir
+              value: cover
+              id: cover
+            repeat_x:
+              label: Repita x
+              value: repeat_x
+              id: repeat_x
+            repeat_y:
+              label: Repita e
+              value: repeat_y
+              id: repeat_y
+            repeat_xy:
+              label: Repita xy
+              value: repeat_xy
+              id: repeat_xy
+        actions:
+          name: Ações
+          icon: info
+        clickable:
+          name: Clicável
+          icon: info
+          placeholder: Selecione Clicável
+          inclusion:
+            'true':
+              label: Sim
+              value: true
+              id: true
+            'false':
+              label: Não
+              value: false
+              id: false
+        click_path:
+          name: Caminho do clique
+          icon: info
+          placeholder: Type Caminho do clique
+        edit_page_block:
+          name: Editar bloco de página
+          icon: info
+        destroy_page_block:
+          name: Destruir bloco de página
+          icon: info

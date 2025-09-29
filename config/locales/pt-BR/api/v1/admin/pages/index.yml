@@ -1,0 +1,60 @@
+---
+pt-BR:
+  api/v1/admin/pages:
+    index:
+      title: Páginas
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        icon: {}
+        name: {}
+        teste:
+          name: Teste
+          icon: info
+        page_index_title:
+          name: Página
+          icon: info
+        page_index_help:
+          name: Lista de páginas registradas
+          icon: info
+        new_page:
+          name: Nova página
+          icon: info
+        body: {}
+        page_filters: {}
+        search:
+          name: Procurar
+          icon: search
+          placeholder: Type Procurar
+        page_table:
+          name: Tabela de páginas
+          icon: info
+          paginate:
+            showing: Exibindo {{x}} de {{y}}
+            more: Mostrar mais
+            next: Próxima página
+            prev: Página anterior
+            first: Primeira página
+            last: Última página
+          white_screen:
+            icon: info
+            title: No Pages found.
+            help: If you have permission to register Pages, click on the button highlighted
+              in the right corner to add it
+          thead:
+            title: Título
+            meta_description: Meta descrição
+            domains: Domínios
+        title:
+          name: Título
+          icon: info
+          placeholder: Título
+        meta_description:
+          name: Meta descrição
+          icon: info
+          placeholder: Meta descrição
+        domains:
+          name: Domínios
+          icon: info
+          placeholder: Domínios

@@ -7,6 +7,9 @@ class Ability
     # Permissões de usuário
     if user.present?
       can :manage, :all
+      cannot :menu, %w[
+        /api/v1/admin/pages/
+      ]
     end
 
     # Permissões de sessão

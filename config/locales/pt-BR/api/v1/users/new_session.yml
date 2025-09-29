@@ -1,0 +1,26 @@
+---
+pt-BR:
+  api/v1/users:
+    new_session:
+      title: Novos usuários da sessão
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        logo:
+          name: Logotipo
+          icon: info
+        sign_in:
+          name: Entrar
+          icon: info
+        email:
+          name: E-mail
+          icon: email
+          placeholder: Digite E-mail
+        password:
+          name: Senha
+          icon: info
+          placeholder: Type Senha
+        sign_in_user:
+          name: Entrar como usuário
+          icon: info

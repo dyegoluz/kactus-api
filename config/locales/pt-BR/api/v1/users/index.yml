@@ -1,0 +1,64 @@
+---
+pt-BR:
+  api/v1/users:
+    index:
+      title: Usuários
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        logo:
+          name: Logotipo
+          icon: info
+        body: {}
+        users_filter: {}
+        search:
+          name: Procurar
+          icon: search
+          placeholder: Procurar
+        profile:
+          name: Perfil
+          icon: info
+          placeholder: Perfil
+          inclusion:
+            admin:
+              label: Administrador
+              value: admin
+              id: admin
+        users_table:
+          name: Tabela de usuários
+          icon: info
+          paginate:
+            showing: Exibindo {{x}} de {{y}}
+            more: Mostrar mais
+            next: Próxima página
+            prev: Página anterior
+            first: Primeira página
+            last: Última página
+          white_screen:
+            icon: info
+            title: No Users found.
+            help: If you have permission to register Users, click on the button highlighted
+              in the right corner to add it
+          thead:
+            name: Nome
+            profile: Perfil
+            cpf: CPF
+            email: E-mail
+            phone: Telefone
+        name:
+          name: Nome
+          icon: info
+          placeholder: Nome
+        cpf:
+          name: CPF
+          icon: info
+          placeholder: CPF
+        email:
+          name: E-mail
+          icon: email
+          placeholder: E-mail
+        phone:
+          name: Telefone
+          icon: phone
+          placeholder: Telefone

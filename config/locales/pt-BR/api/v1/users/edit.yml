@@ -1,0 +1,52 @@
+---
+pt-BR:
+  api/v1/users:
+    edit:
+      title: Editar usuário
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        logo:
+          name: Logotipo
+          icon: info
+        user:
+          name: Usuário
+          icon: info
+        name:
+          name: Nome
+          icon: info
+          placeholder: Digite Nome
+        cpf:
+          name: CPF
+          icon: info
+          placeholder: Digite CPF
+        email:
+          name: E-mail
+          icon: email
+          placeholder: Digite E-mail
+        phone:
+          name: Telefone
+          icon: phone
+          placeholder: Type Telefone
+        profile:
+          name: Perfil
+          icon: info
+          placeholder: Selecione Perfil
+          inclusion:
+            admin:
+              label: Administrador
+              value: admin
+              id: admin
+        password:
+          name: Senha
+          icon: info
+          placeholder: Type Senha
+        password_confirmation:
+          name: Confirmação de senha
+          icon: info
+          placeholder: Type Confirmação de senha
+        image:
+          name: Imagem
+          icon: image
+          placeholder: Select Imagem

@@ -1,0 +1,26 @@
+---
+pt-BR:
+  api/v1/users:
+    edit_invitation:
+      title: Editar convite Usuários
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        logo:
+          name: Logotipo
+          icon: info
+        edit_invitation:
+          name: Editar convite
+          icon: info
+        password:
+          name: Senha
+          icon: info
+          placeholder: Type Senha
+        password_confirmation:
+          name: Confirmação de senha
+          icon: info
+          placeholder: Type Confirmação de senha
+        edit_invitation_user:
+          name: Editar usuário do convite
+          icon: info

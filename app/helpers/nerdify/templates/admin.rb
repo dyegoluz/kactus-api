@@ -1,6 +1,6 @@
 module Nerdify
     module Templates
-        module Admins
+        module Admin
             def self.included(subclass)
                 super(subclass)
                 subclass.class_eval do

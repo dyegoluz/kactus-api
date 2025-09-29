@@ -1,6 +1,6 @@
 module Nerdify
     module Templates
-        module Applications
+        module Application
             def self.included(subclass)
                 super(subclass)
                 subclass.class_eval do
@@ -43,7 +43,7 @@ module Nerdify
 
 
                                 component :container, styles: { padding: { left: 0, top: 0, right: 0, bottom: 0 }, margin: { top: 1 } } do
-                                    menu_path = "platform"
+                                    menu_path = "admin"
                                     nav_items = Nerdify::Config::Menu.new.file_links(menu_path)
                                     component :nav, name: :navigation, i18n_layout: true, styles: { color: "white", padding: { left: 0, top: 0, right: 0, bottom: 0 } }, items: nav_items
                                 end
@@ -86,6 +86,11 @@ module Nerdify
                                     component :filters, name: filter.name, resource: :filters, **{ size: 12, submit: { get: ".", data: { filters: ":resource" }, success: { update: "resources" } } }.merge(filter.options) do
                                         filter.children.each do |child|
                                             self.page.controller.fieldset_or_field(child, self, nil, nerdify_action)
+                                        end
+                                        model.nerdify.actions.select { |action| action.name.to_sym == :index }.each do |action|
+                                            if action.options[:lists].present?
+                                                component :list_types, static: true, position: :right, lists: action.options[:lists], backend_if: action.options[:backend_if]
+                                            end
                                         end
                                         model.nerdify.actions.select { |action| action.options[:only].include?("index") && action.options[:position].to_s == "header" }.each do |action|
                                             component :button, name: :"#{action.name}_#{resource_symbol}", **{ styles: (action.options[:styles] || { background: :primary, margin: { bottom: 2 } }), click: (action.options[:click] || { redirect_to: action.name, open_in: action.options[:open_in] }), backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))") }.merge(**action.options.merge({ position: :right }))
@@ -167,31 +172,42 @@ module Nerdify
                         end
 
                         if self.options[:layout].to_s == "default"
-                            component :container, position: :header, size: 12, styles: { background: :primary, color: :white, border_color: :primary, align: { right: "horizontal" }, padding: { left: 1, top: 2, right: 1, bottom: 0 } } do
-                                component :image, name: :logo, src: "assets/images/logo.png", static: true, image_size: 5, position: :left, i18n_layout: true, click: { redirect_to: "/" }
+                            component :container, position: :header, size: 12, styles: { background: :primary, color: :white, border_color: :primary, align: { body: "center", right: "horizontal" }, padding: { left: 1, top: 1, right: 1, bottom: 0 } } do
+                                component :image, name: :logo, src: "assets/images/logo.png", static: true, image_size: 4, position: :left, i18n_layout: true, click: { redirect_to: "/" }, styles: { margin: { top: 1, bottom: 1 } }
 
 
                                 component :container, styles: { padding: { left: 0, top: 0, right: 0, bottom: 0 }, margin: { top: 1 } } do
-                                    menu_path = "platform"
+                                    menu_path = "admin"
                                     nav_items = Nerdify::Config::Menu.new.file_links(menu_path)
                                     component :nav, name: :navigation, i18n_layout: true, styles: { color: "white", padding: { left: 0, top: 0, right: 0, bottom: 0 } }, items: nav_items
                                 end
 
-                                component :container, position: :right, styles: { margin: { left: 2 }, padding: { left: 0, right: 0 } }, click: { redirect_to: "/integration/users/:resources.current_user.id", open_in: :dialog }, show_if: "this.page.resources.current_user" do
+                                component :container, position: :right, styles: { margin: { left: 2 }, padding: { left: 0, right: 0 } }, render_if: "this.page.resources.current_user" do
                                     component :html, name: :icon, resource: "current_user", show_if: "this.page.resources.current_user.icon"
                                     component :text, type: :span, name: :name, resource: "current_user", styles: { color: "white", display: "d-none d-md-block" }
+
+                                    component :container, position: :dropdown do
+                                        component :text, type: :h1, name: :teste, static: true
+                                    end
                                 end
                             end
+
                             if !self.options[:without_page_header]
                                 component :container do
-                                    component :text, name: :"#{resource_symbol}_#{page.name}", type: :h3, size: 12, static: true
-                                    component :text, name: :"#{resource_symbol}_#{page.name}_help", type: :p, size: 12, static: true
+                                    component :text, name: :"#{resource_symbol}_#{page.name}_title", type: :h3, size: 12, static: true, i18n: "#{resource_symbol.to_s.humanize}"
+                                    component :text, name: :"#{resource_symbol}_#{page.name}_help", type: :p, size: 12, static: true, i18n: "List of registered #{resource_symbol.to_s.humanize}"
 
                                     model.nerdify.actions.select { |action| action.name.to_sym == :tutorial && action.options[:only].include?("new") }.each do |action|
                                         component :button, name: :tutorial, static: true, position: :right, styles: { background: "transparent", color: "primary" }, i18n_layout: true, click: { tutorial: true }, only_icon_on_mobile: true, backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))")
                                     end
 
-                                    model.nerdify.actions.select { |action| action.name.to_sym != :tutorial && action.options[:only].include?("new") && action.options[:position].to_s == "header" }.each do |action|
+                                    model.nerdify.actions.select { |action| action.name.to_sym == :new }.each do |action|
+                                        if action.options[:lists].present?
+                                            component :list_types, static: true, position: :right, lists: action.options[:lists], backend_if: action.options[:backend_if]
+                                        end
+                                    end
+
+                                    model.nerdify.actions.select { |action| action.options[:only].include?("new") && action.options[:position].to_s == "header" }.each do |action|
                                         component :button, name: :"#{action.name}_#{resource_symbol}", **action.options.merge(**{ position: :right, styles: (action.options[:styles] || { background: :primary }), click: (action.options[:click] || { redirect_to: action.name, open_in: action.options[:open_in] }), backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))") }), only_icon_on_mobile: true
                                     end
                                 end
@@ -269,31 +285,42 @@ module Nerdify
                         end
 
                         if self.options[:layout].to_s == "default"
-                            component :container, position: :header, size: 12, styles: { background: :primary, color: :white, border_color: :primary, align: { right: "horizontal" }, padding: { left: 1, top: 2, right: 1, bottom: 0 } } do
-                                component :image, name: :logo, src: "assets/images/logo.png", static: true, image_size: 5, position: :left, i18n_layout: true, click: { redirect_to: "/" }
+                            component :container, position: :header, size: 12, styles: { background: :primary, color: :white, border_color: :primary, align: { body: "center", right: "horizontal" }, padding: { left: 1, top: 1, right: 1, bottom: 0 } } do
+                                component :image, name: :logo, src: "assets/images/logo.png", static: true, image_size: 4, position: :left, i18n_layout: true, click: { redirect_to: "/" }, styles: { margin: { top: 1, bottom: 1 } }
 
 
-                                component :container, position: :right, styles: { padding: { left: 0, top: 0, right: 0, bottom: 0 }, margin: { top: 1 } } do
-                                    menu_path = "platform"
+                                component :container, styles: { padding: { left: 0, top: 0, right: 0, bottom: 0 }, margin: { top: 1 } } do
+                                    menu_path = "admin"
                                     nav_items = Nerdify::Config::Menu.new.file_links(menu_path)
                                     component :nav, name: :navigation, i18n_layout: true, styles: { color: "white", padding: { left: 0, top: 0, right: 0, bottom: 0 } }, items: nav_items
                                 end
 
-                                component :container, position: :right, styles: { margin: { left: 2 }, padding: { left: 0, right: 0 } }, click: { redirect_to: "/integration/users/:resources.current_user.id", open_in: :dialog }, show_if: "this.page.resources.current_user" do
+                                component :container, position: :right, styles: { margin: { left: 2 }, padding: { left: 0, right: 0 } }, render_if: "this.page.resources.current_user" do
                                     component :html, name: :icon, resource: "current_user", show_if: "this.page.resources.current_user.icon"
-                                  # component :text, type: :span, name: :name, resource: "current_user", styles: {color: "white", display: "d-none d-md-block"}, show_if: "this.page.resources.current_user.name"
+                                    component :text, type: :span, name: :name, resource: "current_user", styles: { color: "white", display: "d-none d-md-block" }
+
+                                    component :container, position: :dropdown do
+                                        component :text, type: :h1, name: :teste, static: true
+                                    end
                                 end
                             end
+
                             if !self.options[:without_page_header]
                                 component :container do
-                                    component :text, name: :"#{resource_symbol}_#{page.name}", type: :h3, size: 12, static: true
-                                    component :text, name: :"#{resource_symbol}_#{page.name}_help", type: :p, size: 12, static: true
+                                    component :text, name: :"#{resource_symbol}_#{page.name}_title", type: :h3, size: 12, static: true, i18n: "#{resource_symbol.to_s.humanize}"
+                                    component :text, name: :"#{resource_symbol}_#{page.name}_help", type: :p, size: 12, static: true, i18n: "List of registered #{resource_symbol.to_s.humanize}"
 
-                                    model.nerdify.actions.select { |action| action.name.to_sym == :tutorial && action.options[:only].include?("edit") }.each  do |action|
-                                       component :button, name: :tutorial, static: true, position: :right, styles: { background: "transparent", color: "primary" }, i18n_layout: true, click: { tutorial: true }, only_icon_on_mobile: true, backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))")
+                                    model.nerdify.actions.select { |action| action.name.to_sym == :tutorial && action.options[:only].include?("edit") }.each do |action|
+                                        component :button, name: :tutorial, static: true, position: :right, styles: { background: "transparent", color: "primary" }, i18n_layout: true, click: { tutorial: true }, only_icon_on_mobile: true, backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))")
                                     end
 
-                                    model.nerdify.actions.select { |action| action.name.to_sym != :tutorial && action.options[:only].include?("edit") && action.options[:position].to_s == "header" }.each do |action|
+                                    model.nerdify.actions.select { |action| action.name.to_sym == :edit }.each do |action|
+                                        if action.options[:lists].present?
+                                            component :list_types, static: true, position: :right, lists: action.options[:lists], backend_if: action.options[:backend_if]
+                                        end
+                                    end
+
+                                    model.nerdify.actions.select { |action| action.options[:only].include?("edit") && action.options[:position].to_s == "header" }.each do |action|
                                         component :button, name: :"#{action.name}_#{resource_symbol}", **action.options.merge(**{ position: :right, styles: (action.options[:styles] || { background: :primary }), click: (action.options[:click] || { redirect_to: action.name, open_in: action.options[:open_in] }), backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))") }), only_icon_on_mobile: true
                                     end
                                 end
@@ -372,33 +399,43 @@ module Nerdify
                         end
 
                         if self.options[:layout].to_s == "default"
-                            component :container, position: :header, size: 12, styles: { background: :primary, color: :white, border_color: :primary, align: { right: "horizontal" }, padding: { left: 1, top: 2, right: 1, bottom: 0 } } do
-                                component :image, name: :logo, src: "assets/images/logo.png", static: true, image_size: 5, position: :left, i18n_layout: true, click: { redirect_to: "/" }
+                            component :container, position: :header, size: 12, styles: { background: :primary, color: :white, border_color: :primary, align: { body: "center", right: "horizontal" }, padding: { left: 1, top: 1, right: 1, bottom: 0 } } do
+                                component :image, name: :logo, src: "assets/images/logo.png", static: true, image_size: 4, position: :left, i18n_layout: true, click: { redirect_to: "/" }, styles: { margin: { top: 1, bottom: 1 } }
 
 
-                                component :container, position: :right, styles: { padding: { left: 0, top: 0, right: 0, bottom: 0 }, margin: { top: 1 } } do
-                                    menu_path = "platform"
+                                component :container, styles: { padding: { left: 0, top: 0, right: 0, bottom: 0 }, margin: { top: 1 } } do
+                                    menu_path = "admin"
                                     nav_items = Nerdify::Config::Menu.new.file_links(menu_path)
                                     component :nav, name: :navigation, i18n_layout: true, styles: { color: "white", padding: { left: 0, top: 0, right: 0, bottom: 0 } }, items: nav_items
                                 end
 
-                                component :container, position: :right, styles: { margin: { left: 2 }, padding: { left: 0, right: 0 } }, click: { redirect_to: "/integration/users/:resources.current_user.id", open_in: :dialog }, show_if: "this.page.resources.current_user" do
+                                component :container, position: :right, styles: { margin: { left: 2 }, padding: { left: 0, right: 0 } }, render_if: "this.page.resources.current_user" do
                                     component :html, name: :icon, resource: "current_user", show_if: "this.page.resources.current_user.icon"
-                                  # component :text, type: :span, name: :name, resource: "current_user", styles: {color: "white", display: "d-none d-md-block"}, show_if: "this.page.resources.current_user.name"
+                                    component :text, type: :span, name: :name, resource: "current_user", styles: { color: "white", display: "d-none d-md-block" }
+
+                                    component :container, position: :dropdown do
+                                        component :text, type: :h1, name: :teste, static: true
+                                    end
                                 end
                             end
 
                             if !self.options[:without_page_header]
                                 component :container do
-                                    component :text, name: :"#{resource_symbol}_#{page.name}", type: :h3, size: 12, static: true
-                                    component :text, name: :"#{resource_symbol}_#{page.name}_help", type: :p, size: 12, static: true
+                                    component :text, name: :"#{resource_symbol}_#{page.name}_title", type: :h3, size: 12, static: true, i18n: "#{resource_symbol.to_s.humanize}"
+                                    component :text, name: :"#{resource_symbol}_#{page.name}_help", type: :p, size: 12, static: true, i18n: "List of registered #{resource_symbol.to_s.humanize}"
 
-                                    model.nerdify.actions.select { |action| action.name.to_sym == :tutorial && action.options[:only].include?("show") }.each  do |action|
-                                        component :button, name: :tutorial, static: true, position: :right, i18n_layout: true, click: { tutorial: true }, only_icon_on_mobile: true, backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))")
+                                    model.nerdify.actions.select { |action| action.name.to_sym == :tutorial && action.options[:only].include?("show") }.each do |action|
+                                        component :button, name: :tutorial, static: true, position: :right, styles: { background: "transparent", color: "primary" }, i18n_layout: true, click: { tutorial: true }, only_icon_on_mobile: true, backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))")
                                     end
 
-                                    model.nerdify.actions.select { |action| action.name.to_sym != :tutorial && action.options[:only].include?("show") && action.options[:position].to_s == "header" }.each do |action|
-                                        component :button, name: :"#{action.name}_#{resource_symbol}", **action.options.merge(**{ position: :right, styles: (action.options[:styles]), click: (action.options[:click] || { redirect_to: action.name, open_in: action.options[:open_in] }), backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))") }), only_icon_on_mobile: true
+                                    model.nerdify.actions.select { |action| action.name.to_sym == :show }.each do |action|
+                                        if action.options[:lists].present?
+                                            component :list_types, static: true, position: :right, lists: action.options[:lists], backend_if: action.options[:backend_if]
+                                        end
+                                    end
+
+                                    model.nerdify.actions.select { |action| action.options[:only].include?("show") && action.options[:position].to_s == "header" }.each do |action|
+                                        component :button, name: :"#{action.name}_#{resource_symbol}", **action.options.merge(**{ position: :right, styles: (action.options[:styles] || { background: :primary }), click: (action.options[:click] || { redirect_to: action.name, open_in: action.options[:open_in] }), backend_if: ((action.options[:backend_if] || "true") + " && can?(:#{action.name},(object || #{model}))") }), only_icon_on_mobile: true
                                     end
                                 end
                             end

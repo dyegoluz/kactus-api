@@ -1,0 +1,137 @@
+---
+pt-BR:
+  api/v1/admin/pages:
+    edit:
+      title: Editar página
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        icon: {}
+        name: {}
+        teste:
+          name: Teste
+          icon: info
+        page_edit_title:
+          name: Página
+          icon: info
+        page_edit_help:
+          name: Lista de páginas registradas
+          icon: info
+        page:
+          name: Página
+          icon: info
+        tabs: {}
+        tabs_tabs:
+          name: Guias guias
+          icon: info
+          inclusion:
+            meta_data:
+              icon: info
+              label: Metadados
+              value: meta_data
+              id: meta_data
+            scripts:
+              icon: info
+              label: Roteiros
+              value: scripts
+              id: scripts
+            styles:
+              icon: info
+              label: Estilos
+              value: styles
+              id: styles
+        meta_data:
+          name: Metadados
+          icon: info
+        title:
+          name: Título
+          icon: info
+          placeholder: Digite o título
+        meta_description:
+          name: Meta descrição
+          icon: info
+          placeholder: Type Meta descrição
+        meta_keywords:
+          name: Meta palavras-chave
+          icon: info
+          placeholder: Select Meta palavras-chave
+        domains:
+          name: Domínios
+          icon: info
+          placeholder: Select Domínios
+        scripts:
+          name: Roteiros
+          icon: info
+        font_import_script:
+          name: Script de importação de fonte
+          icon: info
+          placeholder: Type Script de importação de fonte
+        header_script:
+          name: Script de cabeçalho
+          icon: info
+          placeholder: Type Script de cabeçalho
+        footer_script:
+          name: Script de rodapé
+          icon: info
+          placeholder: Type Script de rodapé
+        styles:
+          name: Estilos
+          icon: info
+        h_font_family:
+          name: Família de fontes H
+          icon: info
+          placeholder: Type Família de fontes H
+        text_font_family:
+          name: Família de fontes de texto
+          icon: info
+          placeholder: Type Família de fontes de texto
+        primary_color:
+          name: Cor primária
+          icon: info
+          placeholder: Type Cor primária
+        secondary_color:
+          name: Cor secundária
+          icon: info
+          placeholder: Type Cor secundária
+        info_color:
+          name: Cor da informação
+          icon: info
+          placeholder: Type Cor da informação
+        success_color:
+          name: Cor do sucesso
+          icon: info
+          placeholder: Type Cor do sucesso
+        danger_color:
+          name: Cor perigosa
+          icon: info
+          placeholder: Type Cor perigosa
+        warning_color:
+          name: Cor de advertência
+          icon: info
+          placeholder: Type Cor de advertência
+        light_color:
+          name: Cor clara
+          icon: info
+          placeholder: Tipo Cor clara
+        medium_color:
+          name: Cor média
+          icon: info
+          placeholder: Tipo de corneta de mídia
+        dark_color:
+          name: Cor escura
+          icon: info
+          placeholder: Type Cor escura
+        page_blocks:
+          name: Blocos de página
+          icon: info
+          add_name: Adicionar
+          add_icon: add
+          remove_name: Remover
+          remove_icon: delete
+        edit_cancel_page:
+          name: Editar página de cancelamento
+          icon: info
+        update_page:
+          name: Atualizar página
+          icon: info

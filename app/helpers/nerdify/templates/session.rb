@@ -1,6 +1,6 @@
 module Nerdify
     module Templates
-        module Sessions
+        module Session
             def self.included(subclass)
                 super(subclass)
                 subclass.class_eval do

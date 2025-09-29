@@ -1,0 +1,214 @@
+---
+pt-BR:
+  api/v1/admin/pages/page_blocks:
+    index:
+      title: Blocos de página
+      favicon: favicon.ico
+      meta_description: ''
+      keywords: ''
+      components:
+        icon: {}
+        name:
+          name: Nome
+          icon: info
+          placeholder: Nome
+        teste:
+          name: Teste
+          icon: info
+        page_block_index_title:
+          name: Bloco de página
+          icon: info
+        page_block_index_help:
+          name: Lista de blocos de páginas registrados
+          icon: info
+        new_page_block:
+          name: Novo bloco de página
+          icon: info
+        list_types:
+          page_blocks_tree:
+            name: Blocos e componentes
+          page_blocks_cards:
+            name: Preview
+        body: {}
+        page_filters: {}
+        page_blocks_tree:
+          name: Árvore de blocos de páginas
+          icon: info
+          paginate:
+            showing: Exibindo {{x}} de {{y}}
+            more: Mostrar mais
+            next: Próxima página
+            prev: Página anterior
+            first: Primeira página
+            last: Última página
+          white_screen:
+            icon: info
+            title: No Page blocks found.
+            help: If you have permission to register Page blocks, click on the button
+              highlighted in the right corner to add it
+          thead:
+            name: Nome
+            type: Tipo
+            position: Posição
+            body_size: Tamanho do corpo
+        type:
+          name: Tipo
+          icon: info
+          placeholder: Tipo
+          inclusion:
+            container:
+              label: Recipiente
+              value: container
+              id: container
+            text:
+              label: Texto
+              value: text
+              id: text
+            button:
+              label: Botão
+              value: button
+              id: button
+            video:
+              label: Vídeo
+              value: video
+              id: video
+            photo:
+              label: Foto
+              value: photo
+              id: photo
+            photos:
+              label: Fotos
+              value: photos
+              id: photos
+            chart:
+              label: Gráfico
+              value: chart
+              id: chart
+            nav:
+              label: Nenhum
+              value: nav
+              id: nav
+            form:
+              label: Forma
+              value: form
+              id: form
+        position:
+          name: Posição
+          icon: info
+          placeholder: Posição
+          inclusion:
+            body:
+              label: Corpo
+              value: body
+              id: body
+            top:
+              label: Principal
+              value: top
+              id: top
+            right:
+              label: Certo
+              value: right
+              id: right
+            bottom:
+              label: Fundo
+              value: bottom
+              id: bottom
+            left:
+              label: Esquerda
+              value: left
+              id: left
+            header:
+              label: Cabeçalho
+              value: header
+              id: header
+            footer:
+              label: Rodapé
+              value: footer
+              id: footer
+        body_size:
+          name: Tamanho do corpo
+          icon: info
+          placeholder: Tamanho do corpo
+          inclusion:
+            '1':
+              label: '1'
+              value: '1'
+              id: '1'
+            '2':
+              label: '2'
+              value: '2'
+              id: '2'
+            '3':
+              label: '3'
+              value: '3'
+              id: '3'
+            '4':
+              label: '4'
+              value: '4'
+              id: '4'
+            '5':
+              label: '5'
+              value: '5'
+              id: '5'
+            '6':
+              label: '6'
+              value: '6'
+              id: '6'
+            '7':
+              label: '7'
+              value: '7'
+              id: '7'
+            '8':
+              label: '8'
+              value: '8'
+              id: '8'
+            '9':
+              label: '9'
+              value: '9'
+              id: '9'
+            '10':
+              label: '10'
+              value: '10'
+              id: '10'
+            '11':
+              label: '11'
+              value: '11'
+              id: '11'
+            '12':
+              label: '12'
+              value: '12'
+              id: '12'
+        page_blocks_cards:
+          name: Cartões de blocos de página
+          icon: info
+          paginate:
+            showing: Exibindo {{x}} de {{y}}
+            more: Mostrar mais
+            next: Próxima página
+            prev: Página anterior
+            first: Primeira página
+            last: Última página
+          white_screen:
+            icon: info
+            title: No Page blocks found.
+            help: If you have permission to register Page blocks, click on the button
+              highlighted in the right corner to add it
+        block_container:
+          name: Contêiner de bloco
+          icon: info
+        title:
+          name: Título
+          icon: info
+        subtitle:
+          name: Legenda
+          icon: info
+        paragraph:
+          name: Parágrafo
+          icon: info
+          placeholder: Parágrafo
+        button_text:
+          name: Texto do botão
+          icon: info
+        photo_url:
+          name: URL da foto
+          icon: info
