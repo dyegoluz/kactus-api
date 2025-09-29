@@ -3,7 +3,7 @@ production:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      uri: 'mongodb://kactusnew:388ff099577dbc70f25d64bc7568adb6@dokku-mongo-kactusnew:16633/kactusnew'
+      uri: 'mongodb://kactusnew:388ff099577dbc70f25d64bc7568adb6@dokku-mongo-kactusnew:27017/kactusnew'
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
 development:
