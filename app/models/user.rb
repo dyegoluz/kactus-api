@@ -16,7 +16,7 @@ class User
 
   acts_as_user :database_authenticatable, :invitable, :recoverable
 
-  fieldset :user do
+  fieldset :user, styles: {margin: {}, padding: {}, border: {}} do
     field :name, presence: true
     field :cpf, presence: true, uniqueness: true
     field :email, presence: true, uniqueness: true
