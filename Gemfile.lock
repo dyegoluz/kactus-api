@@ -620,7 +620,7 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
-    sorbet-runtime (0.5.12149)
+    sorbet-runtime (0.6.12598)
     spoon (0.0.6)
       ffi
     spreadsheet (1.3.4)
