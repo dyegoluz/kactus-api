@@ -9,7 +9,7 @@ class Api::V1::RouterController < ApplicationController
     end
 
     def home
-        render json: {  redirect_to: "/admin/pages" }
+        render json: {  redirect_to: "/site/pages" }
     end
 
     def admin
